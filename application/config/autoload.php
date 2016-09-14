@@ -52,8 +52,8 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
+//$autoload['libraries'] = array('database', 'session', 'structures_bibTex');
 $autoload['libraries'] = array('database', 'session');
-
 
 /*
 | -------------------------------------------------------------------

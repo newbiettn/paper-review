@@ -32,11 +32,11 @@
                     <tr>
                         <td><?php echo $i?></td>
                         <td>
-                            <span><?php echo $p["p_title"] ?></span>
-                            <small><?php echo $p["p_author"] ?></small>
+                            <span><?php echo $p["pr_title"] ?></span>
+                            <small><?php echo $p["pr_author"] ?></small>
                         </td>
-                        <td><?php echo date("d-m-Y", strtotime($p["p_added_date"]))?></td>
-                        <td><a href="<?php echo base_url("index.php/paper_controller/view_paper/" . $p["p_id"])?>" class="button">View Review</a></td>
+                        <td><?php echo date("d-m-Y", strtotime($p["pr_added_date"]))?></td>
+                        <td><a href="<?php echo base_url("index.php/paper_controller/view_paper/" . $p["pr_id"])?>" class="button">View Review</a></td>
                     </tr>
                     <?php }?>
                     </tbody>
