@@ -11,15 +11,29 @@
 
         <div class="row">
             <div class="large-12 columns">
-                <h4>List of Reviewed Papers</h4>
+                <h4>Bibliography</h4>
             </div>
         </div>
 
-
+        <div class="row">
+            <div class="large-12 columns">
+                <div id="pagination-container"></div>
+            </div>
+        </div>
         <div class="row">
             <?php print $papers->PrintBibliography(); ?>
         </div>
 
         <?php include_once 'footer.php'?>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>/public/js/vendor/paging.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.bibtex-biblio').paging({
+                    limit:50
+                });
+            });
+        </script>
+
     </body>
 </html>

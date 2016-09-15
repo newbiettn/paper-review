@@ -2,6 +2,11 @@
 
 class Paper_Controller extends CI_Controller {
 
+    function __construct(){
+        parent::__construct();
+        $this->load->model("paper_service");
+    }
+
     public function index()
     {
         $this->load->model('paper_service');
@@ -16,13 +21,7 @@ class Paper_Controller extends CI_Controller {
         $this->load->view('review_paper');
     }
 
-    public function submit_review(){
-        $form = $this->input->post();
-        $form["added_date"] = date("Y-m-d H:i:s");
-        $this->load->model('paper_service');
-        $id = $this->paper_service->insert_paper($form);
-        redirect(base_url('index.php/paper_controller/view_paper/' . $id));
-    }
+
 
     public function view_paper($id = NULL){
         $this->load->model('paper_service');
@@ -140,7 +139,7 @@ class Paper_Controller extends CI_Controller {
         file_put_contents($file, $str);
     }
 
-    public function view_bib(){
+    public function view_bib($year = 2015){
         $this->load->library('phpBibLib/Bibtex');
         $this->load->model('paper_service');
 
@@ -150,16 +149,28 @@ class Paper_Controller extends CI_Controller {
 
         $bibtex->ResetBibliography();
         $bibtex->SetBibliographyStyle('numeric');
-        $bibtex->SetBibliographyOrder('year_d');
-        $bibtex->Select(array('year' => '2010'));
+        $bibtex->SetBibliographyOrder('usg');
+        $bibtex->display_all_papers();
 
         $view_data = array();
-
         $view_data["papers"] = $bibtex;
         $this->load->view('view_bibliography', $view_data);
+    }
 
-//        echo '<pre>' . var_export($bib, true) . '</pre>';
-//        break;
+    public function create_review_from_bib_list($id = NULL){
+        $paper = $this->paper_service->get_paper_detail($id);
+
+        $view_data = array();
+        $view_data["p"] = $paper[0];
+        $this->load->view('create_new_review', $view_data);
+    }
+
+    public function submit_review(){
+        $form = $this->input->post();
+        $form["added_date"] = date("Y-m-d H:i:s");
+
+        $id = $this->paper_service->insert_paper($form);
+        redirect(base_url('index.php/paper_controller/view_paper/' . $id));
     }
 
 }

@@ -90,20 +90,24 @@ abstract class BasePrinter {
 		$str .=	(isset($entry['publisher']) ? ((isset($entry['booktitle']) || (isset($entry['journal']) || isset($entry['volume'])) ? ', ' : '') . '<span class="bibtex-publisher">' . $entry['publisher'] . '</span>'):'');
 		$str .= (isset($entry['year']) ? ', <span class="bibtex-year">' .$entry['year'] . '</span>.' : '' );
 
-        $str .= $this->add_review_button($entry);
-
-		$str .= $this->CitationNoteStr($entry);
+        $str .= $this->CitationNoteStr($entry);
 		$str .= $this->CitationImplementUrlStr($entry);
 		$str .= $this->EndCitationStr();
+        $str .= $this->add_review_button($entry);
 		return $str;
 	}
 	function add_review_button($entry){
         //review_fk
-        $str = "";
+        $str = "<td width='100'>";
         if (isset($entry['review_fk'])){
-            ($entry["review_fk"] != -1)? $r = "<a href='' class='button tiny alert'>Reviewed</a>" : $r = "";
+            if ($entry["review_fk"] != -1) {
+                $r = "<a href='" . base_url("index.php/paper_controller/create_review_from_bib_list/" . $entry["id"]) ."' class='button tiny alert'>Create a review</a>";
+            } else {
+                $r = "<a href='" . base_url("index.php/paper_controller/create_review_from_bib_list/" . $entry["id"]) ."' class='button tiny'>Create a Review</a>";
+            }
             $str .= '<span style="display:block;" class="bibtex-review-fk">' .$r . '</span>';
         }
+        $str .= "</td>";
         return $str;
     }
 	function CitationNoteStr($entry) {

@@ -8,4 +8,5 @@
     <script src="<?php echo base_url(); ?>/public/js/vendor/jquery.js"></script>
     <script src="<?php echo base_url(); ?>/public/js/vendor/what-input.js"></script>
     <script src="<?php echo base_url(); ?>/public/js/vendor/foundation.js"></script>
+    <script src="<?php echo base_url(); ?>/public/js/vendor/pagination.min.js"></script>
 </head>
