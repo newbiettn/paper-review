@@ -52,3 +52,7 @@ footer p {
     border: 1px solid;
     font-weight: bold;
 }
+form label {
+    font-weight: 800;
+    font-size: 1.1  rem;
+}
