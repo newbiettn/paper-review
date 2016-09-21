@@ -5,5 +5,5 @@
         </div>
     </div>
 </footer>
-<script src="<?php echo base_url(); ?>/public/js/vendor/ckeditor.js" type="application/javascript"></script>
-<script src="<?php echo base_url(); ?>/public/js/app.js" type="application/javascript"></script>
+<script src="<?php echo base_url(); ?>/vendor/js/vendor/ckeditor.js" type="application/javascript"></script>
+<script src="<?php echo base_url(); ?>/vendor/js/app.js" type="application/javascript"></script>

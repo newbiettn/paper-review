@@ -44,8 +44,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 |
 */
 
-define('COLLECTION_BIBTEXT',                    FCPATH . 'public/collection.bib');
-define('TEMP_BIBTEX',                           FCPATH . 'public/temp.bib');
+define('COLLECTION_BIBTEXT',                    FCPATH . 'vendor/collection.bib');
+define('TEMP_BIBTEX',                           FCPATH . 'vendor/temp.bib');
 
 
 /* End of file constants.php */

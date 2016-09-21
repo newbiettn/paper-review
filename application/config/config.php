@@ -366,7 +366,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
-$config['upload_path'] = "./public/";
+$config['upload_path'] = "./vendor/";
 if( ! ini_get('date.timezone') )
 {
     date_default_timezone_set('Australia/Melbourne');
