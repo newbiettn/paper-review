@@ -9,30 +9,7 @@ class Paper_Controller extends CI_Controller {
 
     public function index()
     {
-        $this->load->model('paper_service');
-        $papers = $this->paper_service->get_list_paper();
-
-        $view_data = array();
-        $view_data["papers"] = $papers;
-        $this->load->view('list_of_paper', $view_data);
-    }
-
-    public function view_paper($id = NULL){
-        $this->load->model('paper_service');
-        $paper = $this->paper_service->get_paper_detail($id);
-
-        $view_data = array();
-        $view_data["paper"] = $paper;
-        $this->load->view('view_paper', $view_data);
-    }
-
-
-    public function submit_edit_review(){
-        $this->load->model('paper_service');
-        $form = $this->input->post();
-        $form["edited_date"] = date("Y-m-d H:i:s");
-        $this->paper_service->update_paper($form);
-        redirect(base_url('index.php/paper_controller/view_paper/' . $form["id"]));
+        redirect(base_url('index.php/paper_controller/view_all_papers'));
     }
 
     ////////////////////////////////////////////////////////////////
