@@ -26,7 +26,7 @@
 
         <?php include_once 'footer.php'?>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>/public/js/vendor/paging.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>vendor/js/vendor/paging.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.bibtex-biblio').paging({
