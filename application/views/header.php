@@ -7,8 +7,7 @@
     <div class="top-bar-right">
         <ul class="menu">
             <li><a href="<?php echo base_url("index.php/paper_controller/create_review")?>">Create a New Review</a></li>
-            <li><a href="<?php echo base_url("index.php/paper_controller/")?>">View All Papers</a></li>
-            <li><a href="<?php echo base_url("index.php/paper_controller/")?>">Import</a></li>
+            <li><a href="<?php echo base_url("index.php/paper_controller/view_all_papers")?>">View All Papers</a></li>
         </ul>
     </div>
 </div>

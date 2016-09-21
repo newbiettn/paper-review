@@ -566,6 +566,7 @@ class Bibtex {
             $this->SelectEntry($entry['key'], $entry);
         }
     }
+
 	// takes an array, where key => valye identifies the key for which the value should match what value (done through preg_match)
 	// impl for BibArray
 	function Select($queryArray) {

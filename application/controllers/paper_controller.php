@@ -34,6 +34,10 @@ class Paper_Controller extends CI_Controller {
         $this->paper_service->update_paper($form);
         redirect(base_url('index.php/paper_controller/view_paper/' . $form["id"]));
     }
+
+    ////////////////////////////////////////////////////////////////
+    ///// Import A Bibtex File to Db
+    ////////////////////////////////////////////////////////////////
     public function import_bibtex(){
         $this->load->library('phpBibLib/Bibtex');
         $this->load->model('paper_service');
@@ -126,7 +130,10 @@ class Paper_Controller extends CI_Controller {
         }
     }
 
-    public function create_bibtex_file_from_db(){
+    ////////////////////////////////////////////////////////////////
+    ///// Export DB to BibTex
+    ////////////////////////////////////////////////////////////////
+    public function export_to_bibtex(){
         $this->load->model('paper_service');
         $papers = $this->paper_service->get_paper_from_bib();
         $file = TEMP_BIBTEX;
@@ -138,7 +145,7 @@ class Paper_Controller extends CI_Controller {
                 $key_name = (string)$key;
                 $key_val = (string)$p[$key_name];
                 if (!empty($key_val)){
-                    $str .= ucfirst($key_name) . " = {" . $key_val . "}, \n";
+                    $str .=  ($key_name) . " = {" . $key_val . "}, \n";
                 }
             }
             $str .= "} \n";
@@ -147,11 +154,14 @@ class Paper_Controller extends CI_Controller {
         file_put_contents($file, $str);
     }
 
-    public function view_bib(){
+    ////////////////////////////////////////////////////////////////
+    ///// View All Papers
+    ////////////////////////////////////////////////////////////////
+    public function view_all_papers(){
         $this->load->library('phpBibLib/Bibtex');
         $this->load->model('paper_service');
 
-        $this->create_bibtex_file_from_db();
+        $this->export_to_bibtex();
 
         $bibtex = new Bibtex(TEMP_BIBTEX);
 
@@ -162,10 +172,13 @@ class Paper_Controller extends CI_Controller {
 
         $view_data = array();
         $view_data["papers"] = $bibtex;
-        $this->load->view('view_bibliography', $view_data);
+        $this->load->view('view_all_papers', $view_data);
     }
 
-    public function create_review_from_bib_list($paper_id = NULL){
+    ////////////////////////////////////////////////////////////////
+    ///// Create a Review
+    ////////////////////////////////////////////////////////////////
+    public function create_view($paper_id = NULL){
         $is_paper_review_inserted = $this->paper_service->is_paper_review_inserted($paper_id);
         $paper = $this->paper_service->get_paper_detail($paper_id);
 
@@ -175,39 +188,35 @@ class Paper_Controller extends CI_Controller {
             $new_review_id = $this->paper_service->insert_review($review_data, $paper_id);
         }
 
-        //retrieve details of selected paper
-        $paper = $this->paper_service->get_paper_detail($paper_id);
-        redirect(base_url('index.php/paper_controller/open_existing_review/' . $paper));
+        redirect(base_url('index.php/paper_controller/open_review/' . $paper_id . '/' . $new_review_id));
     }
 
-    public function initialize_review($paper_id) {
-        //retrieve details of selected paper
+    ////////////////////////////////////////////////////////////////
+    ///// Open a Review
+    ////////////////////////////////////////////////////////////////
+    public function open_review($paper_id = NULL, $review_id = NULL, $review_saved = FALSE){
         $paper = $this->paper_service->get_paper_detail($paper_id);
+        $review = $this->paper_service->get_review($paper_id, $review_id);
 
-        //create new review in db
-        $review_data["pr_paper_fk"] = $paper_id;
-        $new_review_id = $this->paper_service->insert_review($review_data, $paper_id);
-
-
-        $paper["pr_id"] = $new_review_id;
         $view_data = array();
         $view_data["paper"] = $paper;
-        $this->load->view('view_edit_review', $view_data);
+        $view_data["review"] = $review[0];
+        $view_data["review_saved"] = $review_saved;
+
+        $this->load->view('edit_review', $view_data);
     }
 
-    public function open_existing_review($id = NULL){
-        $paper = $this->paper_service->get_paper_detail($id);
-        $view_data = array();
-        $view_data["paper"] = $paper;
-        $this->load->view('view_edit_review', $view_data);
-    }
-
-    public function submit_update_review(){
+    ////////////////////////////////////////////////////////////////
+    ///// Save a Review
+    ////////////////////////////////////////////////////////////////
+    public function submit_review(){
         $form = $this->input->post();
-        $form["added_date"] = date("Y-m-d H:i:s");
+        $form["pr_added_date"] = date("Y-m-d H:i:s");
 
-        $id = $this->paper_service->update_review($form);
-        redirect(base_url('index.php/paper_controller/view_paper/' . $id));
+        $this->paper_service->update_review($form);
+
+        $review_saved = 1;
+        redirect(base_url('index.php/paper_controller/open_review/' . $form["pr_paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
     }
 
 }
