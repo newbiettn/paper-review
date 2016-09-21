@@ -43,68 +43,89 @@ class Paper_Controller extends CI_Controller {
         $bibtexArrKey = array_keys($bibtexArr);
 
         foreach ($bibtexArrKey as $bib_key) {
+
+            //get paper from bibArray by key
+            $p = $bibtexArr[$bib_key];
+
+            $data = [];
+            //review (-1: non-reviewed)
+            $data["review_fk"]= "-1";
+
+            //paper type
+            (array_key_exists("type", $p))? ($data["type"] = $p["type"]):$data["type"]="";
+
+            //citation key
+            $data["citation_key"] = trim($bib_key);
+
+            //abstract
+            (array_key_exists("abstract", $p))? ($data["abstract"] = $p["abstract"]):$data["abstract"]="";
+
+            //author
+            (array_key_exists("author", $p))? ($data["author"] = $p["author"]):$data["author"]="";
+
+            //title
+            (array_key_exists("title", $p))? ($data["title"] = $p["title"]):$data["title"]="";
+
+            //journal
+            (array_key_exists("journal", $p))? ($data["journal"] = $p["journal"]):$data["journal"]="";
+
+            //year
+            (array_key_exists("year", $p))? ($data["year"] = $p["year"]):$data["year"]= "";
+
+            //volume
+            (array_key_exists("volume", $p))? ($data["volume"] = $p["volume"]):$data["volume"]="";
+
+            //number
+            (array_key_exists("number", $p))? ($data["number"] = $p["number"]):$data["number"]="";
+
+            //pages
+            (array_key_exists("pages", $p))? ($data["pages"] = $p["pages"]):$data["pages"]="";
+
+            //month
+            (array_key_exists("month", $p))? ($data["month"] = $p["month"]):$data["month"]="";
+
+            //note
+            (array_key_exists("note", $p))? ($data["note"] = $p["note"]):$data["note"]="";
+
+            //editor
+            (array_key_exists("editor", $p))? ($data["editor"] = $p["editor"]):$data["editor"]="";
+
+            //publisher
+            (array_key_exists("publisher", $p))? ($data["publisher"] = $p["publisher"]):$data["publisher"]= "";
+
+            //publisher address
+            (array_key_exists("publisher-address", $p))? ($data["publisher_address"] = $p["publisher"]):$data["publisher"]= "";
+
+            //series
+            (array_key_exists("series", $p))? ($data["series"] = $p["series"]):$data["series"]= "";
+
+            //booktitle or the name of the conference
+            (array_key_exists("booktitle", $p))? ($data["booktitle"] = $p["booktitle"]):$data["booktitle"]="";
+
+            //location of the conference
+            (array_key_exists("venue", $p))? ($data["conference_location"] = $p["venue"]):$data["conference_location"]="";
+
+            //edition
+            (array_key_exists("edition", $p))? ($data["edition"] = $p["edition"]):$data["edition"]="";
+
+            //tags
+            (array_key_exists("tags", $p))? ($data["tags"] = $p["tags"]):$data["tags"]="";
+
+            //file
+            (array_key_exists("file", $p))? ($data["file"] = $p["file"]):$data["file"]="";
+
             //check if paper exists
             $is_paper_existed = $this->paper_service->check_unique_citation_key(trim($bib_key));
             if (empty($is_paper_existed)) {
-                //get paper from bibArray by key
-                $p = $bibtexArr[$bib_key];
-
-                $data = [];
-                //review (-1: non-reviewed)
-                $data["review_fk"]= "-1";
-
-                //paper type
-                (array_key_exists("type", $p))? ($data["type"] = $p["type"]):$data["type"]="";
-
-                //citation key
-                $data["citation_key"] = trim($bib_key);
-
-                //author
-                (array_key_exists("author", $p))? ($data["author"] = $p["author"]):$data["author"]="";
-
-                //abstract
-                (array_key_exists("abstract", $p))? ($data["abstract"] = $p["abstract"]):$data["abstract"]="";
-
-                //title
-                (array_key_exists("title", $p))? ($data["title"] = $p["title"]):$data["title"]="";
-
-                //publisher
-                (array_key_exists("publisher", $p))? ($data["publisher"] = $p["publisher"]):$data["publisher"]= "";
-
-                //year
-                (array_key_exists("year", $p))? ($data["year"] = $p["year"]):$data["year"]="";
-
-                //booktitle
-                (array_key_exists("booktitle", $p))? ($data["booktitle"] = $p["booktitle"]):$data["booktitle"]="";
-
-                //editor
-                (array_key_exists("editor", $p))? ($data["editor"] = $p["editor"]):$data["editor"]="";
-
-                //journal
-                (array_key_exists("journal", $p))? ($data["journal"] = $p["journal"]):$data["journal"]="";
-
-                //volume
-                (array_key_exists("volume", $p))? ($data["volume"] = $p["volume"]):$data["volume"]="";
-
-                //number
-                (array_key_exists("number", $p))? ($data["number"] = $p["number"]):$data["number"]="";
-
-                //note
-                (array_key_exists("note", $p))? ($data["note"] = $p["note"]):$data["note"]="";
-
-                //implementationurl
-                (array_key_exists("implementationurl", $p))? ($data["implementationurl"] = $p["implementationurl"]):$data["implementationurl"]="";
-
-                //paperurl
-                (array_key_exists("paperurl", $p))? ($data["paperurl"] = $p["paperurl"]):$data["paperurl"]="";
-
-                //tags
-                (array_key_exists("tags", $p))? ($data["tags"] = $p["tags"]):$data["tags"]="";
-
                 $this->paper_service->insert_paper($data);
+            } else {
+                $paper_id = $is_paper_existed[0]["id"];
+                $data["id"] = $paper_id;
+                $paper = $this->paper_service->update_paper($data);
             }
         }
     }
+
     public function create_bibtex_file_from_db(){
         $this->load->model('paper_service');
         $papers = $this->paper_service->get_paper_from_bib();

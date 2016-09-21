@@ -55,9 +55,23 @@ class Paper_Service extends CI_Model {
         return $q;
     }
 
+
     function get_review(){
         $sql = "SELECT pr_id, pr_added_date FROM tbl_paper_review";
         return $this->db->query($sql)->result_array();
+    }
+
+    //insert a new paper
+    function insert_paper($data){
+        $q = $this->db->insert('tbl_paper', $data);
+        return $this->db->insert_id();
+    }
+
+    //update a per
+    function update_paper($data){
+        $this->db->where('id', $data["id"]);
+        $q = $this->db->update('tbl_paper', $data);
+        return $q;
     }
 
 }
