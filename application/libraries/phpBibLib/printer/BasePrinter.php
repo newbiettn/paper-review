@@ -81,7 +81,7 @@ abstract class BasePrinter {
 		$str = $this->StartCitationStr($entry);
 		$fullnames = $this->AuthorsStr($entry);
 		$str .= '<span class="bibtex-author">' . ($fullnames[strlen($fullnames)-1] == '.' ? substr($fullnames, 0, -1) : $fullnames) . '.</span> ';
-		$str .= '<span class="bibtex-title"><a href="'.(!isset($entry['paperurl']) ? 'http://www.google.com/search?q=' . $this->RemoveTag($entry['title']) : $this->paperDir . $entry['paperurl'] ). '">' . $entry['title'] . '</a></span>. ';
+		$str .= '<span class="bibtex-title"><a target="_blank" href="'.(!isset($entry['paperurl']) ? 'http://www.google.com/search?q=' . $this->RemoveTag($entry['title']) : $this->paperDir . $entry['paperurl'] ). '">' . $entry['title'] . '</a></span>. ';
 		$str .= (isset($entry['booktitle']) ? 'In <span class="bibtex-booktitle">' . $entry['booktitle'] . '</span>' : '');
 		$str .= (isset($entry['journal'])?' <span class="bibtex-jname">' . $entry['journal'] . '</span>':'');
 		$str .= (isset($entry['volume'])?', <span class="bibtex-volume">'.$entry['volume'].'</span>':'');
@@ -101,9 +101,9 @@ abstract class BasePrinter {
         $str = "<td width='100'>";
         if (isset($entry['review_fk'])){
             if ($entry["review_fk"] != -1) {
-                $r = "<a href='" . base_url("index.php/paper_controller/open_review/" . $entry["id"] . '/' . $entry["review_fk"]) ."' class='button tiny'>Open Review</a>";
+                $r = "<a href='" . base_url("index.php/paper/open_review/" . $entry["id"] . '/' . $entry["review_fk"]) ."' class='button tiny'>Open Review</a>";
             } else {
-                $r = "<a href='" . base_url("index.php/paper_controller/create_view/" . $entry["id"]) ."' class='button tiny alert'>Create a Review</a>";
+                $r = "<a href='" . base_url("index.php/paper/create_view/" . $entry["id"]) ."' class='button tiny alert'>Create a Review</a>";
             }
             $str .= '<span style="display:block;" class="bibtex-review-fk">' .$r . '</span>';
         }

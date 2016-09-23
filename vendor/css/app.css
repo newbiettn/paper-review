@@ -54,5 +54,28 @@ footer p {
 }
 form label {
     font-weight: 800;
-    font-size: 1.1  rem;
+    font-size: 1.1 rem;
+}
+.preloader_img {
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+.highlight {
+    background: yellow;
+}
+#paper-search-description p{
+    font-size: 0.9rem;
+    color: #808080;
+}
+#paper-search-description #paper-count {
+    font-weight: bold;
+    background: red;
+    color: #fff;
+    padding: 0 5px;
+}
+.bibtex-title {
+    text-decoration: underline;
+    text-decoration-color: #2ba6cb;
 }

@@ -13,7 +13,13 @@ class Paper_Service extends CI_Model {
 
     //insert a new paper
     function insert_paper($data){
+        $this->db->trans_start();
         $q = $this->db->insert('tbl_paper', $data);
+        $this->db->trans_complete();
+
+        if ($data["citation_key"] = '7181948') {
+            print_r($q);
+        }
         return $this->db->insert_id();
     }
 
@@ -36,10 +42,12 @@ class Paper_Service extends CI_Model {
         return $this->db->query($sql, array($paper_type))->result_array();
     }
 
-    //check if the citation is unique
-    function check_unique_citation_key($cite_key) {
-        $sql = "SELECT id FROM tbl_paper WHERE citation_key = ?";
-        return $this->db->query($sql, array($cite_key))->result_array();
+    //check if the paper is imported
+    function check_unique_citation_key($cite_key, $title) {
+        $sql = "SELECT id 
+                FROM tbl_paper 
+                WHERE citation_key = ? OR title = ?";
+        return $this->db->query($sql, array('citation_key' => $cite_key, 'title' => $title))->result_array();
     }
 
     ////////////////////////////////////////////////////////////////

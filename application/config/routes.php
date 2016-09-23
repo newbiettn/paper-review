@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "paper_controller";
+$route['default_controller'] = "paper";
 $route['404_override'] = '';
 
 

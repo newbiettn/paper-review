@@ -629,7 +629,25 @@ class Bibtex {
 	//////////////////////////////////////////////////////////////////////////////
 	// Print Bibliography
 	//////////////////////////////////////////////////////////////////////////////
-	
+    function getBibliography() {
+        $result = array();
+
+        if($this->scanning === true) return;
+        $str = '<table class="bibtex-biblio">' . "\n";
+        $this->OrderBibliography();
+        $count = 0;
+        foreach($this->used as $key => $info) {
+            if($info['ref'] === false)
+                continue;
+            $entry = isset($info['entry']) ? $info['entry'] : $this->GetEntry($key);
+            $str .= $this->refPrinter->BibliographyEntryStr($entry, $this->used[$key]);
+            $count += 1;
+        }
+        $str .= '</table>' . "\n";
+        $result["count"] = $count;
+        $result["html"] = $str;
+        return $result;
+    }
 	// Prints elements in $this->used, in the order of $this->used.
 	//  If other order is desired, use SetBibliographyOrder(..) in advance.
     function PrintAllBibliography() {

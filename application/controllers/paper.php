@@ -1,15 +1,69 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Paper_Controller extends CI_Controller {
+class Paper extends CI_Controller {
 
+    ////////////////////////////////////////////////////////////////
+    ///// Constructor
+    ////////////////////////////////////////////////////////////////
     function __construct(){
         parent::__construct();
         $this->load->model("paper_service");
     }
 
+    ////////////////////////////////////////////////////////////////
+    ///// Index
+    ////////////////////////////////////////////////////////////////
+
     public function index()
     {
-        redirect(base_url('index.php/paper_controller/view_all_papers'));
+        redirect(base_url('index.php/paper/view_all_papers'));
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ///// View All Papers
+    ////////////////////////////////////////////////////////////////
+    public function view_all_papers(){
+        $this->load->library('phpBibLib/Bibtex');
+        $this->export_to_bibtex();
+
+        $bibtex = new Bibtex(TEMP_BIBTEX);
+
+        $bibtex->ResetBibliography();
+        $bibtex->SetBibliographyStyle('numeric');
+        $bibtex->SetBibliographyOrder('usg');
+        $bibtex->display_all_papers();
+
+        $view_data = array();
+        $bib_result = $bibtex->getBibliography();
+        $view_data['papers'] = $bib_result;
+
+        $this->load->view('view_all_papers', $view_data);
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ///// Search papers
+    ////////////////////////////////////////////////////////////////
+    public function search(){
+        $this->load->library('phpBibLib/Bibtex');
+        $search_val = $this->input->post('search_val');
+
+        $this->export_to_bibtex();
+
+        $bibtex = new Bibtex(TEMP_BIBTEX);
+        $bibtex->ResetBibliography();
+        $bibtex->SetBibliographyStyle('numeric');
+        $bibtex->SetBibliographyOrder('usg');
+        $bibtex->Select(array('title' => $search_val));
+        $bibtex->Select(array('author' => $search_val));
+        $bibtex->Select(array('year' => $search_val));
+
+        $jsonArr = array();
+
+        $bib_result = $bibtex->getBibliography();
+        $jsonArr['count'] = $bib_result["count"];
+        $jsonArr['html'] = $bib_result["html"];
+
+        echo(json_encode($jsonArr));
     }
 
     ////////////////////////////////////////////////////////////////
@@ -92,11 +146,17 @@ class Paper_Controller extends CI_Controller {
             //tags
             (array_key_exists("tags", $p))? ($data["tags"] = $p["tags"]):$data["tags"]="";
 
+            //doi
+            (array_key_exists("doi", $p))? ($data["doi"] = $p["doi"]):$data["doi"]="";
+
             //file
             (array_key_exists("file", $p))? ($data["file"] = $p["file"]):$data["file"]="";
 
+            //abbreviation
+            (array_key_exists("abbreviation", $p))? ($data["abbreviation"] = $p["abbreviation"]):$data["abbreviation"]="";
+            
             //check if paper exists
-            $is_paper_existed = $this->paper_service->check_unique_citation_key(trim($bib_key));
+            $is_paper_existed = $this->paper_service->check_unique_citation_key(trim($bib_key), trim($data["title"]));
             if (empty($is_paper_existed)) {
                 $this->paper_service->insert_paper($data);
             } else {
@@ -132,27 +192,6 @@ class Paper_Controller extends CI_Controller {
     }
 
     ////////////////////////////////////////////////////////////////
-    ///// View All Papers
-    ////////////////////////////////////////////////////////////////
-    public function view_all_papers(){
-        $this->load->library('phpBibLib/Bibtex');
-        $this->load->model('paper_service');
-
-        $this->export_to_bibtex();
-
-        $bibtex = new Bibtex(TEMP_BIBTEX);
-
-        $bibtex->ResetBibliography();
-        $bibtex->SetBibliographyStyle('numeric');
-        $bibtex->SetBibliographyOrder('usg');
-        $bibtex->display_all_papers();
-
-        $view_data = array();
-        $view_data["papers"] = $bibtex;
-        $this->load->view('view_all_papers', $view_data);
-    }
-
-    ////////////////////////////////////////////////////////////////
     ///// Create a Review
     ////////////////////////////////////////////////////////////////
     public function create_view($paper_id = NULL){
@@ -165,7 +204,7 @@ class Paper_Controller extends CI_Controller {
             $new_review_id = $this->paper_service->insert_review($review_data, $paper_id);
         }
 
-        redirect(base_url('index.php/paper_controller/open_review/' . $paper_id . '/' . $new_review_id));
+        redirect(base_url('index.php/paper/open_review/' . $paper_id . '/' . $new_review_id));
     }
 
     ////////////////////////////////////////////////////////////////
@@ -193,7 +232,7 @@ class Paper_Controller extends CI_Controller {
         $this->paper_service->update_review($form);
 
         $review_saved = 1;
-        redirect(base_url('index.php/paper_controller/open_review/' . $form["pr_paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
+        redirect(base_url('index.php/paper/open_review/' . $form["pr_paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
     }
 
 }
