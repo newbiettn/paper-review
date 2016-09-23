@@ -71,7 +71,6 @@ class Paper extends CI_Controller {
     ////////////////////////////////////////////////////////////////
     public function import_bibtex(){
         $this->load->library('phpBibLib/Bibtex');
-        $this->load->model('paper_service');
 
         $bibtex = new Bibtex(COLLECTION_BIBTEXT);
         $bibtexArr = $bibtex->getBibtexAsArray();
@@ -128,8 +127,8 @@ class Paper extends CI_Controller {
             //publisher
             (array_key_exists("publisher", $p))? ($data["publisher"] = $p["publisher"]):$data["publisher"]= "";
 
-            //publisher address
-            (array_key_exists("publisher-address", $p))? ($data["publisher_address"] = $p["publisher"]):$data["publisher"]= "";
+            //address of the publisher
+            (array_key_exists("address", $p))? ($data["address"] = $p["address"]):$data["address"]= "";
 
             //series
             (array_key_exists("series", $p))? ($data["series"] = $p["series"]):$data["series"]= "";
@@ -138,7 +137,7 @@ class Paper extends CI_Controller {
             (array_key_exists("booktitle", $p))? ($data["booktitle"] = $p["booktitle"]):$data["booktitle"]="";
 
             //location of the conference
-            (array_key_exists("venue", $p))? ($data["conference_location"] = $p["venue"]):$data["conference_location"]="";
+            (array_key_exists("venue", $p))? ($data["venue"] = $p["venue"]):$data["venue"]="";
 
             //edition
             (array_key_exists("edition", $p))? ($data["edition"] = $p["edition"]):$data["edition"]="";
@@ -154,9 +153,15 @@ class Paper extends CI_Controller {
 
             //abbreviation
             (array_key_exists("abbreviation", $p))? ($data["abbreviation"] = $p["abbreviation"]):$data["abbreviation"]="";
-            
+
+            //abbreviation
+            (array_key_exists("isbn", $p))? ($data["isbn"] = $p["isbn"]):$data["isbn"]="";
+
+            //beautify first before import
+            $data = $this->paper_service->beautify($data);
+
             //check if paper exists
-            $is_paper_existed = $this->paper_service->check_unique_citation_key(trim($bib_key), trim($data["title"]));
+            $is_paper_existed = $this->paper_service->is_paper_existed(trim($bib_key), trim($data["title"]));
             if (empty($is_paper_existed)) {
                 $this->paper_service->insert_paper($data);
             } else {
@@ -234,5 +239,9 @@ class Paper extends CI_Controller {
         $review_saved = 1;
         redirect(base_url('index.php/paper/open_review/' . $form["pr_paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
     }
+
+    ////////////////////////////////////////////////////////////////
+    ///// Save a Review
+    ////////////////////////////////////////////////////////////////
 
 }
