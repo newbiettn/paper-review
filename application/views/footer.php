@@ -1,7 +1,7 @@
 <footer>
     <div class="row">
         <div class="large-12 columns">
-            <p>Developed by <a href="http://ngoctran.me/" target="_blank">Ngoc Tran</a> in August 2016</p>
+            <p>Developed by <a href="http://ngoctran.me/" target="_blank">Ngoc Tran</a> in 2016</p>
         </div>
     </div>
 </footer>

@@ -1,6 +1,10 @@
+.top-bar, .top-bar ul {
+    background: #074e68 none repeat scroll 0 0;
+}
 .site-title {
-    padding: 0 !important;
+    color: #e6e6e6;
     font-size: 1.2rem;
+    padding: 0 !important;
 }
 .top-bar {
     margin-bottom: 30px;
@@ -25,11 +29,14 @@ form label {
 }
 footer {
     padding: 10px 0;
-    background: #e6e6e6;
     margin-top: 100px;
+    background: #074e68 none repeat scroll 0 0;
 }
 footer p {
     text-align: center;
+    color: #fff;
+    font-size: 0.75rem;
+    margin: 6px 0 0;
 }
 .questionnaire-container{
     background: #e6e6e6;
@@ -71,7 +78,7 @@ form label {
 }
 #paper-search-description #paper-count {
     font-weight: bold;
-    background: red;
+    background: #c60f13;
     color: #fff;
     padding: 0 5px;
 }

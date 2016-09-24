@@ -20,7 +20,7 @@
 
         <div class="row">
             <div class="large-12 columns" id="paper-search-description">
-                <p>At the moment, there are <span id="paper-count"><?php print $papers["count"]; ?></span> papers in total</p>
+                <p>There are <span id="paper-count"><?php print $papers["count"]; ?></span> papers in the list</p>
             </div>
         </div>
 
