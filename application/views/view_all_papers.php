@@ -9,12 +9,6 @@
     <body>
         <?php include_once 'header.php'?>
 
-<!--        <div class="row">-->
-<!--            <div class="large-12 columns">-->
-<!--                <h4>Bibliography</h4>-->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="row">
             <div class="large-12 columns input-group">
                 <input class="input-group-field" type="text" id="search_val">

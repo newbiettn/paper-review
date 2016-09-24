@@ -93,6 +93,7 @@ abstract class BasePrinter {
         $str .= $this->CitationNoteStr($entry);
 		$str .= $this->CitationImplementUrlStr($entry);
 		$str .= $this->EndCitationStr();
+        $str .= $this->add_field_validation($entry);
         $str .= $this->add_review_button($entry);
 		return $str;
 	}
@@ -110,6 +111,16 @@ abstract class BasePrinter {
         $str .= "</td>";
         return $str;
     }
+    function add_field_validation($entry){
+        $str = "<td width='150' class=\"bibtex-validation\">";
+        if (isset($entry['review_fk'])) {
+            $str .= '<span style="display:block;">' .$entry['validation'] . '</span>';
+            //$str = (isset($entry['validation']) ? ', <span class="bibtex-validation">' . $entry['validation'] . '</span>.' : '');
+        }
+        $str .= "</td>";
+        return $str;
+    }
+
 	function CitationNoteStr($entry) {
 		$str = (isset($entry['note']) ? ', <span class="bibtex-note">(' .$entry['note'] . ')</span>.' : '' );
 		return $str;

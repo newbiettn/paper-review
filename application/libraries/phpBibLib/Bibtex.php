@@ -634,6 +634,7 @@ class Bibtex {
 
         if($this->scanning === true) return;
         $str = '<table class="bibtex-biblio">' . "\n";
+        $str .= '<thead><tr><th></th><th>Paper</th><th>Missing fields</th><th>Review</th></tr></thead>';
         $this->OrderBibliography();
         $count = 0;
         foreach($this->used as $key => $info) {
@@ -651,6 +652,7 @@ class Bibtex {
 	// Prints elements in $this->used, in the order of $this->used.
 	//  If other order is desired, use SetBibliographyOrder(..) in advance.
     function PrintAllBibliography() {
+
         echo '<table class="bibtex-biblio">' . "\n";
         foreach($this as $key => $info) {
             if($info['ref'] === false)

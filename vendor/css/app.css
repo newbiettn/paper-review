@@ -79,3 +79,14 @@ form label {
     text-decoration: underline;
     text-decoration-color: #2ba6cb;
 }
+/*.bibtex-validation{*/
+    /*background: red none repeat scroll 0 0;*/
+    /*color: #fff;*/
+    /*font-weight: normal;*/
+/*}*/
+.bibtex-citation, .bibtex-validation {
+    border-right: 1px solid #f1f1f1;
+}
+table tbody tr:nth-child(2n) .bibtex-citation, table tbody tr:nth-child(2n) .bibtex-validation {
+    border-right: 1px solid #fff;
+}

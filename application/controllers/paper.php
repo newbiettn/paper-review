@@ -173,28 +173,188 @@ class Paper extends CI_Controller {
     }
 
     ////////////////////////////////////////////////////////////////
+    ///// Validate bibtex
+    ////////////////////////////////////////////////////////////////
+    public function validate_bibtex($p){
+        $papers = $this->paper_service->get_paper_from_bib();
+
+        $required_list =
+            array("article" => ["author", "title", "journal", "month", "year", "publisher", "address"],
+                "inproceedings" => ["author", "title", "publisher", "year", "month", "address", "booktitle"]
+                  );
+
+
+        //get all fields of a paper
+        $current_fields = array_keys($p);
+
+        //get all required fields of a matching type
+        $type = $p["type"];
+        $required_fields = $required_list[$type];
+
+        //compare if the required field existed
+        $diff_arr = array_diff($required_fields, $current_fields);
+
+        //the field exists but empty is still invalidated
+        foreach($required_fields as $f) {
+            $field_content = $p[$f];
+            if ($field_content == '') {
+                array_push($diff_arr, $f);
+            }
+        }
+        $str = "";
+        if (!empty($diff_arr)){
+            foreach($diff_arr as $field) {
+                $str .= "<span style='display:inline-block; background: #f1f1f1; border: 1px solid #dddddd; margin: 3px; padding: 3px 5px;font-size: 12px;'>" . $field . "</span>";
+            }
+        }
+
+        return $str;
+    }
+
+    ////////////////////////////////////////////////////////////////
     ///// Export DB to BibTex
     ////////////////////////////////////////////////////////////////
     public function export_to_bibtex(){
-        $this->load->model('paper_service');
         $papers = $this->paper_service->get_paper_from_bib();
         $file = TEMP_BIBTEX;
 
         $str = "";
         foreach($papers as $p) {
-            $str .= "@" . $p["type"] . "{" . $p["citation_key"] . ", \n";
-            foreach(array_keys($p) as $key) {
-                $key_name = (string)$key;
-                $key_val = (string)$p[$key_name];
-                if (!empty($key_val)){
-                    $str .=  ($key_name) . " = {" . $key_val . "}, \n";
-                }
+            //check field first
+            $validation = $this->validate_bibtex($p);
+
+            $type = $p["type"];
+            $citation_key = $p["citation_key"];
+            $abstract = $p["abstract"];
+            $author = $p["author"];
+            $title = $p["title"];
+            $journal = $p["journal"];
+            $year = $p["year"];
+            $volume = $p["volume"];
+            $number = $p["number"];
+            $pages = $p["pages"];
+            $month = $p["month"];
+            $editor = $p["editor"];
+            $publisher = $p["publisher"];
+            $address = $p["address"];
+            $series = $p["series"];
+            $booktitle = $p["booktitle"];
+            $edition = $p["edition"];
+            $tags = $p["tags"];
+            $doi = $p["doi"];
+            $file_path = $p["file"];
+            $abbreviation = $p["abbreviation"];
+            $venue = $p["venue"];
+            $isbn = $p["isbn"];
+
+            $str .= "@" . $p["type"] . "{" . $citation_key . ", \n";
+
+            //compulsory parts
+            $str .= "author = {" . $author . "},";
+            $str .= "title = {" . $title . "},";
+            $str .= "year = {" . $year . "},";
+            $str .= "month = {" . $month . "},";
+
+            //tailored
+            if ($type == "inproceedings") {
+                $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
+                $str .= "pages = {" . $pages . "},";
+                $str .= "publisher = {" . $publisher . "},";
+                $str .= "address = {" . $address . "}";
+                $str .= "volume = {" . $volume . "},";
+                $str .= "editor = {" . $editor . "},";
+
+            } else if ($type == "article") {
+                $str .= "journal = {" . $journal . "},";
+                $str .= "pages = {" . $pages . "},";
+                $str .= "publisher = {" . $publisher . "},";
+                $str .= "address = {" . $address . "}";
+                $str .= "volume = {" . $volume . "},";
+                $str .= "series = {" . $series . "},";
             }
+
+            $str .= "id = {" . $p["id"] . "},";
+            $str .= "review_fk = {" . $p["review_fk"] . "},";
+            $str .= "validation = {" . $validation . "}";
+            $str .= "} \n";
+
+
+        }
+
+        file_put_contents($file, $str);
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ///// Export DB to BibTex
+    ////////////////////////////////////////////////////////////////
+    public function export_to_bibtex_for_mendeley(){
+        $papers = $this->paper_service->get_paper_from_bib();
+        $file = TEMP_BIBTEX;
+
+        $str = "";
+        foreach($papers as $p) {
+            $type = $p["type"];
+            $citation_key = $p["citation_key"];
+            $abstract = $p["abstract"];
+            $author = $p["author"];
+            $title = $p["title"];
+            $journal = $p["journal"];
+            $year = $p["year"];
+            $volume = $p["volume"];
+            $number = $p["number"];
+            $pages = $p["pages"];
+            $month = $p["month"];
+            $editor = $p["editor"];
+            $publisher = $p["publisher"];
+            $address = $p["address"];
+            $series = $p["series"];
+            $booktitle = $p["booktitle"];
+            $edition = $p["edition"];
+            $tags = $p["tags"];
+            $doi = $p["doi"];
+            $file_path = $p["file"];
+            $abbreviation = $p["abbreviation"];
+            $venue = $p["venue"];
+            $isbn = $p["isbn"];
+
+            $str .= "@" . $p["type"] . "{" . $citation_key . ", \n";
+
+            //compulsory parts
+            $str .= "author = {" . $author . "},";
+            $str .= "title = {" . $title . "},";
+            $str .= "year = {" . $year . "},";
+            $str .= "month = {" . $month . "},";
+
+            //tailored
+            if ($type == "inproceedings") {
+                $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
+                $str .= "pages = {" . $pages . "},";
+                $str .= "publisher = {" . $publisher . "},";
+                $str .= "address = {" . $address . "}";
+                $str .= "volume = {" . $volume . "},";
+                $str .= "editor = {" . $editor . "},";
+
+            } else if ($type == "article") {
+                $str .= "journal = {" . $journal . "},";
+                $str .= "pages = {" . $pages . "},";
+                $str .= "publisher = {" . $publisher . "},";
+                $str .= "address = {" . $address . "}";
+                $str .= "volume = {" . $volume . "},";
+                $str .= "series = {" . $series . "},";
+            }
+
+            //temporary, will find a way to remove later
+            $str .= "id = {" . $p["id"] . "},";
+            $str .= "review_fk = {" . $p["review_fk"] . "},";
+
+            $str .= "note = {" . $volume . "}";
             $str .= "} \n";
         }
 
         file_put_contents($file, $str);
     }
+
+
 
     ////////////////////////////////////////////////////////////////
     ///// Create a Review
