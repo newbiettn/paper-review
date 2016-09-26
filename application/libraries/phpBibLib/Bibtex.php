@@ -624,8 +624,30 @@ class Bibtex {
 			$this->SelectEntry($key);
 		}
 	}
-	
-	
+
+    //////////////////////////////////////////////////////////////////////////////
+    // Print Bibliography Simple
+    //////////////////////////////////////////////////////////////////////////////
+    function getBibliographySimple() {
+        $result = array();
+
+        if($this->scanning === true) return;
+        $str = '<table class="bibtex-biblio">' . "\n";
+        $str .= '<thead><tr><th></th><th>Paper</th></tr></thead>';
+        $this->OrderBibliography();
+        $count = 0;
+        foreach($this->used as $key => $info) {
+            if($info['ref'] === false)
+                continue;
+            $entry = isset($info['entry']) ? $info['entry'] : $this->GetEntry($key);
+            $str .= $this->refPrinter->BibliographyEntryStrSimple($entry, $this->used[$key]);
+            $count += 1;
+        }
+        $str .= '</table>' . "\n";
+        $result["count"] = $count;
+        $result["html"] = $str;
+        return $result;
+    }
 	//////////////////////////////////////////////////////////////////////////////
 	// Print Bibliography
 	//////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Paper extends CI_Controller {
+class Manage extends MY_Controller {
 
     ////////////////////////////////////////////////////////////////
     ///// Constructor
@@ -16,13 +16,13 @@ class Paper extends CI_Controller {
 
     public function index()
     {
-        redirect(base_url('index.php/paper/view_all_papers'));
+        redirect(base_url('index.php/paper/manage/show_all_papers'));
     }
 
     ////////////////////////////////////////////////////////////////
-    ///// View All Papers
+    ///// View All Papers without Edit View
     ////////////////////////////////////////////////////////////////
-    public function view_all_papers(){
+    public function show_all_papers(){
         $this->load->library('phpBibLib/Bibtex');
         $this->create_temp_file_for_processed();
 
@@ -35,13 +35,16 @@ class Paper extends CI_Controller {
 
         $view_data = array();
         $bib_result = $bibtex->getBibliography();
-        $view_data['papers'] = $bib_result;
 
-        $this->load->view('view_all_papers', $view_data);
+        $view_data['papers'] = $bib_result;
+        $view_data['head'] = $this->load->view('head', NULL, TRUE);
+        $view_data['header'] = $this->load->view('header', NULL, TRUE);
+        $view_data['footer'] = $this->load->view('footer', NULL, TRUE);
+        $this->load->view('paper/simple_all_papers', $view_data);
     }
 
     ////////////////////////////////////////////////////////////////
-    ///// Search papers
+    ///// Search papers Simple
     ////////////////////////////////////////////////////////////////
     public function search(){
         $this->load->library('phpBibLib/Bibtex');

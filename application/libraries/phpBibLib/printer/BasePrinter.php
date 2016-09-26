@@ -25,7 +25,17 @@ abstract class BasePrinter {
 	//////////////////////////////////////////////////////////////////////////////
 	// Functions to dress up a list of references, e.g., [1,2,3]
 	//////////////////////////////////////////////////////////////////////////////
-	
+    function BibliographyEntryStrSimple($entry, $usage) {
+        $str = $this->StartBibliographyEntryStr($entry);
+        $str .= $this->StartBibliographyRefStr();
+        $str .= $this->StartListStr() . $this->ListRefStr($entry, $usage) . $this->EndListStr();
+        $str .= $this->EndBibliographyRefStr();
+        $str .= $this->StartBibliographyCitationStr();
+        $str .= $this->CitationStrViewOnly($entry);
+        $str .= $this->EndBibliographyCitationStr();
+        $str .= $this->EndBibliographyEntryStr();
+        return $str;
+    }
 	// Gives the string of the full citation, for use in the bibliography, so with ref/key if needed
 	function BibliographyEntryStr($entry, $usage) {
 		$str = $this->StartBibliographyEntryStr($entry);
@@ -75,6 +85,26 @@ abstract class BasePrinter {
 		return preg_replace($pattern, '', $line);
 	}
 
+    function CitationStrViewOnly($entry) {
+        global $Path;
+        $str = $this->StartCitationStr($entry);
+        $fullnames = $this->AuthorsStr($entry);
+        $str .= '<span class="bibtex-author">' . ($fullnames[strlen($fullnames)-1] == '.' ? substr($fullnames, 0, -1) : $fullnames) . '.</span> ';
+        $str .= '<span class="bibtex-title"><a target="_blank" href="'.(!isset($entry['paperurl']) ? 'http://www.google.com/search?q=' . $this->RemoveTag($entry['title']) : $this->paperDir . $entry['paperurl'] ). '">' . $entry['title'] . '</a></span>. ';
+        $str .= (isset($entry['booktitle']) ? 'In <span class="bibtex-booktitle">' . $entry['booktitle'] . '</span>' : '');
+        $str .= (isset($entry['journal'])?' <span class="bibtex-jname">' . $entry['journal'] . '</span>':'');
+        $str .= (isset($entry['volume'])?', <span class="bibtex-volume">'.$entry['volume'].'</span>':'');
+        $str .= ((isset($entry['volume']) && isset($entry['number'])) ? '<span class="bibtex-number">('.$entry['number'].')</span>':'');
+        $str .= (isset($entry['pages']) ? (isset($entry['number']) || isset($entry['volume']) ? '' : ', ') .'<span class="bibtex-pages">'.(isset($entry['volume'])?':':'pages ').'' . $this->PagesStr($entry) . '</span>' : '');
+        $str .=	(isset($entry['publisher']) ? ((isset($entry['booktitle']) || (isset($entry['journal']) || isset($entry['volume'])) ? ', ' : '') . '<span class="bibtex-publisher">' . $entry['publisher'] . '</span>'):'');
+        $str .= (isset($entry['year']) ? ', <span class="bibtex-year">' .$entry['year'] . '</span>.' : '' );
+
+        $str .= $this->add_export_icon($entry);
+        $str .= $this->CitationNoteStr($entry);
+        $str .= $this->CitationImplementUrlStr($entry);
+        $str .= $this->EndCitationStr();
+        return $str;
+    }
 	// Gives the string of the full citation, like for in a list
 	function CitationStr($entry) {
 		global $Path;

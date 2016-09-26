@@ -5,9 +5,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 
     <!--Include Head-->
-    <?php include_once 'head.php' ?>
+    <?=$head?>
     <body>
-        <?php include_once 'header.php'?>
+        <?=$header?>
 
         <div class="row">
             <div class="large-12 columns input-group">
@@ -31,7 +31,7 @@
 
         </div>
 
-        <?php include_once 'footer.php'?>
+        <?=footer?>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
         <script src="<?php echo base_url(); ?>vendor/js/vendor/jquery.highlight.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>vendor/js/vendor/paging.js"></script>
