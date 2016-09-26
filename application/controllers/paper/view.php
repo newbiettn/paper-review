@@ -40,7 +40,7 @@ class View extends CI_Controller {
         $view_data['head'] = $this->load->view('head', NULL, TRUE);
         $view_data['header'] = $this->load->view('header', NULL, TRUE);
         $view_data['footer'] = $this->load->view('footer', NULL, TRUE);
-        $this->load->view('paper/simple_all_papers', $view_data);
+        $this->load->view('paper/view_list_of_papers', $view_data);
     }
 
     ////////////////////////////////////////////////////////////////

@@ -130,7 +130,7 @@ abstract class BasePrinter {
 	}
 	function add_export_icon($entry){
 	    $str = "";
-	    $str .= "<a href='" . base_url("index.php/paper/export_a_paper_to_bibtex/" . $entry["id"]) . "' class='tiny'>";
+	    $str .= "<a target='_blank' href='" . base_url("index.php/paper/manage/export_a_paper_to_bibtex/" . $entry["id"]) . "' class='tiny'>";
         $str .= '<img src="' . base_url('vendor/img/bibtex.png') . '" class="bibtex_download" height="15" width="43">';
         $str .= "</a>";
 

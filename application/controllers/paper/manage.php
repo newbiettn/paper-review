@@ -40,7 +40,7 @@ class Manage extends MY_Controller {
         $view_data['head'] = $this->load->view('head', NULL, TRUE);
         $view_data['header'] = $this->load->view('header', NULL, TRUE);
         $view_data['footer'] = $this->load->view('footer', NULL, TRUE);
-        $this->load->view('paper/simple_all_papers', $view_data);
+        $this->load->view('paper/view_list_of_papers', $view_data);
     }
 
     ////////////////////////////////////////////////////////////////
@@ -288,8 +288,15 @@ class Manage extends MY_Controller {
     ////////////////////////////////////////////////////////////////
     ///// Export to BibTex
     ////////////////////////////////////////////////////////////////
-    public function export_to_bibtex(){
-        
+    public function export_a_paper_to_bibtex($paper_id = NULL){
+        if ($paper_id != NULL) {
+            $p = $this->paper_service->get_paper_detail($paper_id);
+            $bib_str = $this->generate_a_single_bibtex($p);
+
+            $view_data = array();
+            $view_data["bib_str"] = $bib_str;
+            $this->load->view('paper/export_individual_bibtex', $view_data);
+        }
     }
 
     ////////////////////////////////////////////////////////////////
@@ -324,34 +331,34 @@ class Manage extends MY_Controller {
         $isbn = $p["isbn"];
 
         $str = "";
-        $str .= "@" . $p["type"] . "{" . $citation_key . ", \n";
+        $str .= "@" . $p["type"] . "{" . $citation_key . ", <br>";
 
         //compulsory parts
-        $str .= "author = {" . $author . "},";
-        $str .= "title = {" . $title . "},";
-        $str .= "year = {" . $year . "},";
-        $str .= "month = {" . $month . "},";
+        $str .= "author = {" . $author . "},<br>";
+        $str .= "title = {" . $title . "},<br>";
+        $str .= "year = {" . $year . "},<br>";
+        $str .= "month = {" . $month . "},<br>";
 
         //tailored
         if ($type == "inproceedings") {
-            $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
-            $str .= "pages = {" . $pages . "},";
-            $str .= "publisher = {" . $publisher . "},";
-            $str .= "address = {" . $address . "}";
-            $str .= "volume = {" . $volume . "},";
-            $str .= "editor = {" . $editor . "},";
+            $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},<br>";
+            $str .= "pages = {" . $pages . "},<br>";
+            $str .= "publisher = {" . $publisher . "}, <br>";
+            $str .= "address = {" . $address . "},<br>";
+            $str .= "volume = {" . $volume . "},<br>";
+            $str .= "editor = {" . $editor . "},<br>";
 
         } else if ($type == "article") {
-            $str .= "journal = {" . $journal . "},";
-            $str .= "pages = {" . $pages . "},";
-            $str .= "publisher = {" . $publisher . "},";
-            $str .= "address = {" . $address . "}";
-            $str .= "volume = {" . $volume . "},";
-            $str .= "series = {" . $series . "},";
+            $str .= "journal = {" . $journal . "},<br>";
+            $str .= "pages = {" . $pages . "},<br>";
+            $str .= "publisher = {" . $publisher . "},<br>";
+            $str .= "address = {" . $address . "},<br>";
+            $str .= "volume = {" . $volume . "},<br>";
+            $str .= "series = {" . $series . "},<br>";
         }
 
-        $str .= "note = {" . $volume . "}";
-        $str .= "}\n";
+        $str .= "note = {" . $volume . "}<br>";
+        $str .= "}<br>";
 
         return $str;
     }
