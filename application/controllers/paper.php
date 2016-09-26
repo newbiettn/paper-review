@@ -24,7 +24,7 @@ class Paper extends CI_Controller {
     ////////////////////////////////////////////////////////////////
     public function view_all_papers(){
         $this->load->library('phpBibLib/Bibtex');
-        $this->export_to_bibtex();
+        $this->create_temp_file_for_processed();
 
         $bibtex = new Bibtex(TEMP_BIBTEX);
 
@@ -47,7 +47,7 @@ class Paper extends CI_Controller {
         $this->load->library('phpBibLib/Bibtex');
         $search_val = $this->input->post('search_val');
 
-        $this->export_to_bibtex();
+        $this->create_temp_file_for_processed();
 
         $bibtex = new Bibtex(TEMP_BIBTEX);
         $bibtex->ResetBibliography();
@@ -212,9 +212,9 @@ class Paper extends CI_Controller {
     }
 
     ////////////////////////////////////////////////////////////////
-    ///// Export DB to BibTex
+    ///// Create a temp text file for displaying
     ////////////////////////////////////////////////////////////////
-    public function export_to_bibtex(){
+    public function create_temp_file_for_processed(){
         $papers = $this->paper_service->get_paper_from_bib();
         $file = TEMP_BIBTEX;
 
@@ -276,85 +276,96 @@ class Paper extends CI_Controller {
             $str .= "id = {" . $p["id"] . "},";
             $str .= "review_fk = {" . $p["review_fk"] . "},";
             $str .= "validation = {" . $validation . "}";
-            $str .= "} \n";
 
-
+            $str .= "}\n";
         }
 
         file_put_contents($file, $str);
     }
+    ////////////////////////////////////////////////////////////////
+    ///// Export to BibTex
+    ////////////////////////////////////////////////////////////////
+    public function export_to_bibtex(){
+        
+    }
 
     ////////////////////////////////////////////////////////////////
-    ///// Export DB to BibTex
+    ///// Generate a single BibTex string
     ////////////////////////////////////////////////////////////////
-    public function export_to_bibtex_for_mendeley(){
+    public function generate_a_single_bibtex($p){
+        $papers = $this->paper_service->get_paper_from_bib();
+        $file = TEMP_BIBTEX;
+
+        $type = $p["type"];
+        $citation_key = $p["citation_key"];
+        $abstract = $p["abstract"];
+        $author = $p["author"];
+        $title = $p["title"];
+        $journal = $p["journal"];
+        $year = $p["year"];
+        $volume = $p["volume"];
+        $number = $p["number"];
+        $pages = $p["pages"];
+        $month = $p["month"];
+        $editor = $p["editor"];
+        $publisher = $p["publisher"];
+        $address = $p["address"];
+        $series = $p["series"];
+        $booktitle = $p["booktitle"];
+        $edition = $p["edition"];
+        $tags = $p["tags"];
+        $doi = $p["doi"];
+        $file_path = $p["file"];
+        $abbreviation = $p["abbreviation"];
+        $venue = $p["venue"];
+        $isbn = $p["isbn"];
+
+        $str = "";
+        $str .= "@" . $p["type"] . "{" . $citation_key . ", \n";
+
+        //compulsory parts
+        $str .= "author = {" . $author . "},";
+        $str .= "title = {" . $title . "},";
+        $str .= "year = {" . $year . "},";
+        $str .= "month = {" . $month . "},";
+
+        //tailored
+        if ($type == "inproceedings") {
+            $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
+            $str .= "pages = {" . $pages . "},";
+            $str .= "publisher = {" . $publisher . "},";
+            $str .= "address = {" . $address . "}";
+            $str .= "volume = {" . $volume . "},";
+            $str .= "editor = {" . $editor . "},";
+
+        } else if ($type == "article") {
+            $str .= "journal = {" . $journal . "},";
+            $str .= "pages = {" . $pages . "},";
+            $str .= "publisher = {" . $publisher . "},";
+            $str .= "address = {" . $address . "}";
+            $str .= "volume = {" . $volume . "},";
+            $str .= "series = {" . $series . "},";
+        }
+
+        $str .= "note = {" . $volume . "}";
+        $str .= "}\n";
+
+        return $str;
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ///// Generate all papers to BibTex string
+    ////////////////////////////////////////////////////////////////
+    public function generate_bibtex_for_all_papers(){
         $papers = $this->paper_service->get_paper_from_bib();
         $file = TEMP_BIBTEX;
 
         $str = "";
         foreach($papers as $p) {
-            $type = $p["type"];
-            $citation_key = $p["citation_key"];
-            $abstract = $p["abstract"];
-            $author = $p["author"];
-            $title = $p["title"];
-            $journal = $p["journal"];
-            $year = $p["year"];
-            $volume = $p["volume"];
-            $number = $p["number"];
-            $pages = $p["pages"];
-            $month = $p["month"];
-            $editor = $p["editor"];
-            $publisher = $p["publisher"];
-            $address = $p["address"];
-            $series = $p["series"];
-            $booktitle = $p["booktitle"];
-            $edition = $p["edition"];
-            $tags = $p["tags"];
-            $doi = $p["doi"];
-            $file_path = $p["file"];
-            $abbreviation = $p["abbreviation"];
-            $venue = $p["venue"];
-            $isbn = $p["isbn"];
-
-            $str .= "@" . $p["type"] . "{" . $citation_key . ", \n";
-
-            //compulsory parts
-            $str .= "author = {" . $author . "},";
-            $str .= "title = {" . $title . "},";
-            $str .= "year = {" . $year . "},";
-            $str .= "month = {" . $month . "},";
-
-            //tailored
-            if ($type == "inproceedings") {
-                $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
-                $str .= "pages = {" . $pages . "},";
-                $str .= "publisher = {" . $publisher . "},";
-                $str .= "address = {" . $address . "}";
-                $str .= "volume = {" . $volume . "},";
-                $str .= "editor = {" . $editor . "},";
-
-            } else if ($type == "article") {
-                $str .= "journal = {" . $journal . "},";
-                $str .= "pages = {" . $pages . "},";
-                $str .= "publisher = {" . $publisher . "},";
-                $str .= "address = {" . $address . "}";
-                $str .= "volume = {" . $volume . "},";
-                $str .= "series = {" . $series . "},";
-            }
-
-            //temporary, will find a way to remove later
-            $str .= "id = {" . $p["id"] . "},";
-            $str .= "review_fk = {" . $p["review_fk"] . "},";
-
-            $str .= "note = {" . $volume . "}";
-            $str .= "} \n";
+            $str .= $this->generate_a_single_bibtex($p);
         }
-
-        file_put_contents($file, $str);
+        return $str;
     }
-
-
 
     ////////////////////////////////////////////////////////////////
     ///// Create a Review

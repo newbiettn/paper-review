@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c553115-94f4-41ab-867f-6d4417f1a4ae" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/paper.php" afterPath="$PROJECT_DIR$/application/controllers/paper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" afterPath="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/css/app.css" afterPath="$PROJECT_DIR$/vendor/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/temp.bib" afterPath="$PROJECT_DIR$/vendor/temp.bib" />
     </list>
     <ignored path="paper-review.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,18 +32,18 @@
           <file leaf-file-name="view_all_papers.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/views/view_all_papers.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="110" selection-start-line="22" selection-start-column="110" selection-end-line="22" selection-end-column="110" />
+                <state relative-caret-position="-180">
+                  <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/vendor/css/app.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+                <state relative-caret-position="658">
+                  <caret line="101" column="21" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -48,12 +52,12 @@
           <file leaf-file-name="paper.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/controllers/paper.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="206" column="117" selection-start-line="206" selection-start-column="117" selection-end-line="206" selection-end-column="117" />
+                <state relative-caret-position="480">
+                  <caret line="231" column="31" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
                   <folding>
-                    <element signature="n#search#0;n#Paper#0;n#!!top" expanded="false" />
                     <element signature="n#import_bibtex#0;n#Paper#0;n#!!top" expanded="false" />
-                    <marker date="1474695802000" expanded="true" signature="7630:7746" ph="..." />
+                    <element signature="n#validate_bibtex#0;n#Paper#0;n#!!top" expanded="false" />
+                    <marker date="1474717226000" expanded="true" signature="7658:7774" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -69,14 +73,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BasePrinter.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="BasePrinter.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="106" column="119" selection-start-line="106" selection-start-column="114" selection-end-line="106" selection-end-column="119" />
+                <state relative-caret-position="360">
+                  <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
                   <folding>
-                    <marker date="1474695773000" expanded="true" signature="4708:4722" ph="..." />
-                    <marker date="1474695773000" expanded="true" signature="5012:5026" ph="..." />
+                    <marker date="1474850811000" expanded="true" signature="5096:5110" ph="..." />
+                    <marker date="1474850811000" expanded="true" signature="5400:5414" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -86,10 +90,10 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="paper_service.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="paper_service.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/application/models/paper_service.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
+                <state relative-caret-position="405">
                   <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
                   <folding>
                     <marker date="1474616872000" expanded="true" signature="276:312" ph="SELECT * FRO... tbl_paper" />
@@ -115,11 +119,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="foundation.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="foundation.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/vendor/css/foundation.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -189,11 +193,11 @@
         <option value="$PROJECT_DIR$/application/models/paper_service.php" />
         <option value="$PROJECT_DIR$/application/views/validate_bibtex.php" />
         <option value="$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php" />
-        <option value="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
-        <option value="$PROJECT_DIR$/application/controllers/paper.php" />
         <option value="$PROJECT_DIR$/application/views/view_all_papers.php" />
         <option value="$PROJECT_DIR$/application/views/footer.php" />
+        <option value="$PROJECT_DIR$/application/controllers/paper.php" />
         <option value="$PROJECT_DIR$/vendor/css/app.css" />
+        <option value="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
       </list>
     </option>
   </component>
@@ -332,6 +336,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -539,8 +561,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -550,16 +572,16 @@
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v4.5.0/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application/libraries/phpBibLib/printer" />
-      <recent name="$PROJECT_DIR$/application/libraries/phpBibLib/db" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vendor/img" />
       <recent name="$PROJECT_DIR$/vendor/css" />
       <recent name="$PROJECT_DIR$/application/views" />
       <recent name="$PROJECT_DIR$/vendor/js/vendor" />
-      <recent name="$PROJECT_DIR$/vendor/img" />
       <recent name="$PROJECT_DIR$/sql" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/libraries/phpBibLib/printer" />
+      <recent name="$PROJECT_DIR$/application/libraries/phpBibLib/db" />
     </key>
   </component>
   <component name="RunManager">
@@ -629,12 +651,13 @@
       <workItem from="1473829209002" duration="18792000" />
       <workItem from="1474433641927" duration="8301000" />
       <workItem from="1474518747523" duration="8044000" />
-      <workItem from="1474608011551" duration="16685000" />
+      <workItem from="1474608011551" duration="20837000" />
+      <workItem from="1474850311191" duration="772000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111811000" />
+    <option name="totallyTimeSpent" value="116735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="839" extended-state="0" />
@@ -794,7 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="69" column="44" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,7 +864,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -911,48 +933,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php">
+    <entry file="file://$PROJECT_DIR$/vendor/css/foundation.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="636" column="46" selection-start-line="636" selection-start-column="46" selection-end-line="636" selection-end-column="46" />
+        <state relative-caret-position="135">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
+    <entry file="file://$PROJECT_DIR$/application/views/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="106" column="119" selection-start-line="106" selection-start-column="114" selection-end-line="106" selection-end-column="119" />
-          <folding>
-            <marker date="1474695773000" expanded="true" signature="4708:4722" ph="..." />
-            <marker date="1474695773000" expanded="true" signature="5012:5026" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/paper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="206" column="117" selection-start-line="206" selection-start-column="117" selection-end-line="206" selection-end-column="117" />
-          <folding>
-            <element signature="n#search#0;n#Paper#0;n#!!top" expanded="false" />
-            <element signature="n#import_bibtex#0;n#Paper#0;n#!!top" expanded="false" />
-            <marker date="1474695802000" expanded="true" signature="7630:7746" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/view_all_papers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="110" selection-start-line="22" selection-start-column="110" selection-end-line="22" selection-end-column="110" />
+        <state relative-caret-position="45">
+          <caret line="3" column="90" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/paper_service.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="405">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
             <marker date="1474616872000" expanded="true" signature="276:312" ph="SELECT * FRO... tbl_paper" />
@@ -967,27 +966,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/footer.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/paper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="90" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
+        <state relative-caret-position="480">
+          <caret line="231" column="31" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
+          <folding>
+            <element signature="n#import_bibtex#0;n#Paper#0;n#!!top" expanded="false" />
+            <element signature="n#validate_bibtex#0;n#Paper#0;n#!!top" expanded="false" />
+            <marker date="1474717226000" expanded="true" signature="7658:7774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="636" column="46" selection-start-line="636" selection-start-column="46" selection-end-line="636" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/css/foundation.css">
+    <entry file="file://$PROJECT_DIR$/application/views/view_all_papers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-180">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="658">
+          <caret line="101" column="21" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+          <folding>
+            <marker date="1474850811000" expanded="true" signature="5096:5110" ph="..." />
+            <marker date="1474850811000" expanded="true" signature="5400:5414" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

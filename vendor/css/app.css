@@ -97,3 +97,7 @@ form label {
 table tbody tr:nth-child(2n) .bibtex-citation, table tbody tr:nth-child(2n) .bibtex-validation {
     border-right: 1px solid #fff;
 }
+.bibtex_download {
+    display: inline-block;
+    margin-left: 10px;
+}

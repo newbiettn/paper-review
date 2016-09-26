@@ -90,6 +90,7 @@ abstract class BasePrinter {
 		$str .=	(isset($entry['publisher']) ? ((isset($entry['booktitle']) || (isset($entry['journal']) || isset($entry['volume'])) ? ', ' : '') . '<span class="bibtex-publisher">' . $entry['publisher'] . '</span>'):'');
 		$str .= (isset($entry['year']) ? ', <span class="bibtex-year">' .$entry['year'] . '</span>.' : '' );
 
+        $str .= $this->add_export_icon($entry);
         $str .= $this->CitationNoteStr($entry);
 		$str .= $this->CitationImplementUrlStr($entry);
 		$str .= $this->EndCitationStr();
@@ -97,6 +98,14 @@ abstract class BasePrinter {
         $str .= $this->add_review_button($entry);
 		return $str;
 	}
+	function add_export_icon($entry){
+	    $str = "";
+	    $str .= "<a href='" . base_url("index.php/paper/export_a_paper_to_bibtex/" . $entry["id"]) . "' class='tiny'>";
+        $str .= '<img src="' . base_url('vendor/img/bibtex.png') . '" class="bibtex_download" height="15" width="43">';
+        $str .= "</a>";
+
+        return $str;
+    }
 	function add_review_button($entry){
         //review_fk
         $str = "<td width='100'>";
