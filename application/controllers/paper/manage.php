@@ -386,11 +386,11 @@ class Manage extends MY_Controller {
 
         if (empty($is_paper_review_inserted)){
             //create new review in db
-            $review_data["pr_paper_fk"] = $paper_id;
+            $review_data["paper_fk"] = $paper_id;
             $new_review_id = $this->paper_service->insert_review($review_data, $paper_id);
         }
 
-        redirect(base_url('index.php/paper/open_review/' . $paper_id . '/' . $new_review_id));
+        redirect(base_url('index.php/paper/manage/open_review/' . $paper_id . '/' . $new_review_id));
     }
 
     ////////////////////////////////////////////////////////////////
@@ -405,7 +405,11 @@ class Manage extends MY_Controller {
         $view_data["review"] = $review[0];
         $view_data["review_saved"] = $review_saved;
 
-        $this->load->view('edit_review', $view_data);
+        $view_data['head'] = $this->load->view('head', NULL, TRUE);
+        $view_data['header'] = $this->load->view('header', NULL, TRUE);
+        $view_data['footer'] = $this->load->view('footer', NULL, TRUE);
+
+        $this->load->view('paper/edit_review', $view_data);
     }
 
     ////////////////////////////////////////////////////////////////
@@ -413,16 +417,11 @@ class Manage extends MY_Controller {
     ////////////////////////////////////////////////////////////////
     public function submit_review(){
         $form = $this->input->post();
-        $form["pr_added_date"] = date("Y-m-d H:i:s");
+        $form["added_date"] = date("Y-m-d H:i:s");
 
         $this->paper_service->update_review($form);
 
         $review_saved = 1;
-        redirect(base_url('index.php/paper/open_review/' . $form["pr_paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
+        redirect(base_url('index.php/paper/manage/open_review/' . $form["paper_fk"] . '/' . $form["pr_id"] . '/' . $review_saved));
     }
-
-    ////////////////////////////////////////////////////////////////
-    ///// Save a Review
-    ////////////////////////////////////////////////////////////////
-
 }

@@ -141,9 +141,9 @@ abstract class BasePrinter {
         $str = "<td width='100'>";
         if (isset($entry['review_fk'])){
             if ($entry["review_fk"] != -1) {
-                $r = "<a href='" . base_url("index.php/paper/open_review/" . $entry["id"] . '/' . $entry["review_fk"]) ."' class='button tiny'>Open Review</a>";
+                $r = "<a href='" . base_url("index.php/paper/manage/open_review/" . $entry["id"] . '/' . $entry["review_fk"]) ."' class='button tiny'>Open Review</a>";
             } else {
-                $r = "<a href='" . base_url("index.php/paper/create_view/" . $entry["id"]) ."' class='button tiny alert'>Create a Review</a>";
+                $r = "<a href='" . base_url("index.php/paper/manage/create_view/" . $entry["id"]) ."' class='button tiny alert'>Create a Review</a>";
             }
             $str .= '<span style="display:block;" class="bibtex-review-fk">' .$r . '</span>';
         }

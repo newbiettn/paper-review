@@ -55,8 +55,8 @@ class Paper_Service extends CI_Model {
     function get_review($paper_id, $review_id){
         $sql = "SELECT *
                 FROM tbl_paper_review 
-                WHERE pr_paper_fk = ? AND pr_id = ?";
-        return $this->db->query($sql, array('pr_paper_fk' => $paper_id, 'pr_id' => $review_id))->result_array();
+                WHERE paper_fk = ? AND pr_id = ?";
+        return $this->db->query($sql, array('paper_fk' => $paper_id, 'pr_id' => $review_id))->result_array();
     }
 
     //insert a review
@@ -83,11 +83,18 @@ class Paper_Service extends CI_Model {
 
     //check if there is an existing review
     function is_paper_review_inserted($paper_id){
-        $sql = "SELECT pr_id, pr_paper_fk 
+        $sql = "SELECT pr_id, paper_fk 
                 FROM tbl_paper_review 
-                WHERE pr_paper_fk = ?";
+                WHERE paper_fk = ?";
         return $this->db->query($sql, array($paper_id))->result_array();
     }
+
+    //auto matching between paper and review
+//    function matching_review_and_paper(){
+//        $sql = "SELECT id, title
+//                FROM tbl_paper
+//                WHERE paper_fk = -1";
+//    }
 
     ////////////////////////////////////////////////////////////////
     ///// Misc Service

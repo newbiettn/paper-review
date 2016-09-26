@@ -18,6 +18,7 @@
                 </a>
             </li>
             <li><a class="button" href="<?php echo base_url()?>index.php/user/login/do_logout">Logout</a></li>
+
         <?php }?>
     </ul>
 </nav>

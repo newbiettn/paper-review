@@ -38,7 +38,6 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules ( 'password', 'Password', 'required|trim|max_length[200]|xss_clean|callback_validatePwd' );
 
         if ($this->form_validation->run () == TRUE) {
-            $this->load->model ( 'user_service' );
             // get variables
             $username = $this->input->post ( 'username' );
             $password = $this->input->post ( 'password' );
@@ -50,6 +49,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata ( $userdata );
             redirect ( 'welcome' );
         }
+
         $this->show_login ();
     }
     ////////////////////////////////////////////////////////////////
