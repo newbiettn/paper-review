@@ -45,7 +45,11 @@
                     search_val = $('#search_val').val();
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url("index.php/paper/search")?>',
+                        <?php if ( ! $this->session->userdata('username')) { ?>
+                        url: '<?php echo base_url("index.php/paper/view/search")?>',
+                        <?php } else {?>
+                        url: '<?php echo base_url("index.php/paper/manage/search")?>',
+                        <?php }?>
                         dataType: 'json',
                         beforeSend: function(){
                             html = '<img src="<?php echo base_url(); ?>vendor/img/preloader.gif" class="preloader_img" height="64" width="64">';

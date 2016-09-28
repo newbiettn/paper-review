@@ -104,25 +104,25 @@ class Paper_Service extends CI_Model {
         $p = $this->trim_space($p);
 
         //generate citation key
-        $p = $this->generate_citation_key($p);
+//        $p = $this->generate_citation_key($p);
 
         //upper case author, title, journal, editor, address, booktitle, venue
-        (array_key_exists("author", $p))? $p["author"] = $this->uppercase($p["author"]): false;
-        (array_key_exists("title", $p))? $p["title"] = $this->uppercase($p["title"]): false;
-        (array_key_exists("journal", $p))? $p["journal"] = $this->uppercase($p["journal"]): false;
-        (array_key_exists("editor", $p))? $p["editor"] = $this->uppercase($p["editor"]): false;
-        (array_key_exists("address", $p))? $p["address"] = $this->uppercase($p["address"]): false;
-        (array_key_exists("booktitle", $p))? $p["booktitle"] = $this->uppercase($p["booktitle"]): false;
-        (array_key_exists("venue", $p))? $p["venue"] = $this->uppercase($p["venue"]): false;
+//        (array_key_exists("author", $p))? $p["author"] = $this->uppercase($p["author"]): false;
+//        (array_key_exists("title", $p))? $p["title"] = $this->uppercase($p["title"]): false;
+//        (array_key_exists("journal", $p))? $p["journal"] = $this->uppercase($p["journal"]): false;
+//        (array_key_exists("editor", $p))? $p["editor"] = $this->uppercase($p["editor"]): false;
+//        (array_key_exists("address", $p))? $p["address"] = $this->uppercase($p["address"]): false;
+//        (array_key_exists("booktitle", $p))? $p["booktitle"] = $this->uppercase($p["booktitle"]): false;
+//        (array_key_exists("venue", $p))? $p["venue"] = $this->uppercase($p["venue"]): false;
 
         //retrieve the address of publishers
-        $p = $this->get_publisher_address($p);
+//        $p = $this->get_publisher_address($p);
 
         //repair month
-        $p = $this->repair_month($p);
+//        $p = $this->repair_month($p);
 
         //remove dot at the end of the the tittle field
-        $p = $this->remove_dot($p);
+//        $p = $this->remove_dot($p);
 
         return $p;
     }
@@ -191,10 +191,10 @@ class Paper_Service extends CI_Model {
      * Generate citation key
      */
     public function generate_citation_key($p){
-        if (array_key_exists("author", $p)) {
+        if (array_key_exists("author", $p) && array_key_exists("doi", $p) && array_key_exists("year", $p)) {
             $arr = explode(' ',trim($p["author"]));
             $first_name = substr($arr[0], 0, -1);
-            $p["citation_key"] = $first_name . '_' . $p["year"];
+            $p["citation_key"] = $first_name . ':' . $p["year"] . ":" . explode('/',trim($p["doi"]))[0];
         }
         return $p;
     }

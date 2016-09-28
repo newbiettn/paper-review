@@ -260,12 +260,12 @@ class View extends CI_Controller {
 
             //tailored
             if ($type == "inproceedings") {
-                $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
+                $str .= "booktitle = {" . $booktitle ."},";
                 $str .= "pages = {" . $pages . "},";
                 $str .= "publisher = {" . $publisher . "},";
                 $str .= "address = {" . $address . "}";
-                $str .= "volume = {" . $volume . "},";
-                $str .= "editor = {" . $editor . "},";
+                (!empty($volume))? $str .= "volume = {" . $volume . "}," : false;
+                (!empty($editor))? $str .= "editor = {" . $editor . "}," : false;
 
             } else if ($type == "article") {
                 $str .= "journal = {" . $journal . "},";

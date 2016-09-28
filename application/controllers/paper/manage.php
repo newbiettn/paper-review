@@ -20,7 +20,7 @@ class Manage extends MY_Controller {
     }
 
     ////////////////////////////////////////////////////////////////
-    ///// View All Papers without Edit View
+    ///// View All Papers with Full Funcs
     ////////////////////////////////////////////////////////////////
     public function show_all_papers(){
         $this->load->library('phpBibLib/Bibtex');
@@ -30,7 +30,7 @@ class Manage extends MY_Controller {
 
         $bibtex->ResetBibliography();
         $bibtex->SetBibliographyStyle('numeric');
-        $bibtex->SetBibliographyOrder('usg');
+        $bibtex->SetBibliographyOrder('alphabetic');
         $bibtex->display_all_papers();
 
         $view_data = array();
@@ -170,6 +170,9 @@ class Manage extends MY_Controller {
             } else {
                 $paper_id = $is_paper_existed[0]["id"];
                 $data["id"] = $paper_id;
+                //keep the review fk
+                $p = $this->paper_service->get_paper_detail($paper_id);
+                $data["review_fk"]= $p["review_fk"];
                 $paper = $this->paper_service->update_paper($data);
             }
         }
@@ -260,12 +263,12 @@ class Manage extends MY_Controller {
 
             //tailored
             if ($type == "inproceedings") {
-                $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},";
+                $str .= "booktitle = {" . $booktitle ."},";
                 $str .= "pages = {" . $pages . "},";
                 $str .= "publisher = {" . $publisher . "},";
                 $str .= "address = {" . $address . "}";
-                $str .= "volume = {" . $volume . "},";
-                $str .= "editor = {" . $editor . "},";
+                (!empty($volume))? $str .= "volume = {" . $volume . "}," : false;
+                (!empty($editor))? $str .= "editor = {" . $editor . "}," : false;
 
             } else if ($type == "article") {
                 $str .= "journal = {" . $journal . "},";
@@ -304,7 +307,6 @@ class Manage extends MY_Controller {
     ////////////////////////////////////////////////////////////////
     public function generate_a_single_bibtex($p){
         $papers = $this->paper_service->get_paper_from_bib();
-        $file = TEMP_BIBTEX;
 
         $type = $p["type"];
         $citation_key = $p["citation_key"];
@@ -325,11 +327,14 @@ class Manage extends MY_Controller {
         $edition = $p["edition"];
         $tags = $p["tags"];
         $doi = $p["doi"];
-        $file_path = $p["file"];
+        $file = $p["file"];
         $abbreviation = $p["abbreviation"];
         $venue = $p["venue"];
         $isbn = $p["isbn"];
 
+        //$file = substr($file, 0, -4);
+        $file = substr($file, 1, -4);
+        $file = '/' . $file;
         $str = "";
         $str .= "@" . $p["type"] . "{" . $citation_key . ", <br>";
 
@@ -341,12 +346,14 @@ class Manage extends MY_Controller {
 
         //tailored
         if ($type == "inproceedings") {
-            $str .= "booktitle = {Proceedings of " . $booktitle . "(" . $abbreviation . ", " . $venue . ")" ."},<br>";
+            $str .= "booktitle = {" . $booktitle ."},<br>";
             $str .= "pages = {" . $pages . "},<br>";
             $str .= "publisher = {" . $publisher . "}, <br>";
             $str .= "address = {" . $address . "},<br>";
             $str .= "volume = {" . $volume . "},<br>";
             $str .= "editor = {" . $editor . "},<br>";
+            $str .= "venue = {" . $venue . "},<br>";
+            $str .= "abbreviation = {" . $abbreviation . "},<br>";
 
         } else if ($type == "article") {
             $str .= "journal = {" . $journal . "},<br>";
@@ -356,7 +363,8 @@ class Manage extends MY_Controller {
             $str .= "volume = {" . $volume . "},<br>";
             $str .= "series = {" . $series . "},<br>";
         }
-
+        $str .= "isbn = {" . $isbn . "},<br>";
+        $str .= "local-url = {" . $file . "},<br>";
         $str .= "note = {" . $volume . "}<br>";
         $str .= "}<br>";
 
@@ -374,7 +382,7 @@ class Manage extends MY_Controller {
         foreach($papers as $p) {
             $str .= $this->generate_a_single_bibtex($p);
         }
-        return $str;
+        echo $str;
     }
 
     ////////////////////////////////////////////////////////////////
@@ -384,13 +392,15 @@ class Manage extends MY_Controller {
         $is_paper_review_inserted = $this->paper_service->is_paper_review_inserted($paper_id);
         $paper = $this->paper_service->get_paper_detail($paper_id);
 
+        $review_id = "";
+
         if (empty($is_paper_review_inserted)){
             //create new review in db
             $review_data["paper_fk"] = $paper_id;
-            $new_review_id = $this->paper_service->insert_review($review_data, $paper_id);
+            $review_id = $this->paper_service->insert_review($review_data, $paper_id);
         }
 
-        redirect(base_url('index.php/paper/manage/open_review/' . $paper_id . '/' . $new_review_id));
+        redirect(base_url('index.php/paper/manage/open_review/' . $paper_id . '/' . $review_id));
     }
 
     ////////////////////////////////////////////////////////////////

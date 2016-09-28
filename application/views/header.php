@@ -17,7 +17,9 @@
                     <?php echo $username?>
                 </a>
             </li>
-            <li><a class="button" href="<?php echo base_url()?>index.php/user/login/do_logout">Logout</a></li>
+            <li><a class="button small" href="<?php echo base_url()?>index.php/paper/manage/import_bibtex">Import</a></li>
+            <li class="divider"></li>
+            <li><a class="button small" href="<?php echo base_url()?>index.php/user/login/do_logout">Logout</a></li>
 
         <?php }?>
     </ul>

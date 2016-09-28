@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c553115-94f4-41ab-867f-6d4417f1a4ae" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/core/My_Controller.php" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/temp/edit_review.php" afterPath="$PROJECT_DIR$/application/views/paper/edit_review.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/collection.bib" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/.htaccess" afterPath="$PROJECT_DIR$/application/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/autoload.php" afterPath="$PROJECT_DIR$/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/routes.php" afterPath="$PROJECT_DIR$/application/config/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/constants.php" afterPath="$PROJECT_DIR$/application/config/constants.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/paper/manage.php" afterPath="$PROJECT_DIR$/application/controllers/paper/manage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/user/login.php" afterPath="$PROJECT_DIR$/application/controllers/user/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/paper/view.php" afterPath="$PROJECT_DIR$/application/controllers/paper/view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" afterPath="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/paper_service.php" afterPath="$PROJECT_DIR$/application/models/paper_service.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/header.php" afterPath="$PROJECT_DIR$/application/views/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/collection.bib" afterPath="$PROJECT_DIR$/vendor/collection.bib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/paper/view_list_of_papers.php" afterPath="$PROJECT_DIR$/application/views/paper/view_list_of_papers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/temp.bib" afterPath="$PROJECT_DIR$/vendor/temp.bib" />
     </list>
     <ignored path="paper-review.iws" />
@@ -36,11 +32,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+      <file leaf-file-name="paper_service.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/paper_service.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+            <state relative-caret-position="155">
+              <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+              <folding>
+                <marker date="1475037907000" expanded="true" signature="276:312" ph="SELECT * FRO... tbl_paper" />
+                <marker date="1475037907000" expanded="true" signature="922:952" ph="SELECT p.* F... tbl_paper" />
+                <marker date="1475037907000" expanded="true" signature="1114:1160" ph="SELECT * FRO... tbl_paper_type" />
+                <marker date="1475037907000" expanded="true" signature="1349:1430" ph="SELECT id FR... tbl_paper" />
+                <marker date="1475037907000" expanded="true" signature="1349:1443" ph="SELECT id FR... tbl_paper" />
+                <marker date="1475037907000" expanded="true" signature="1825:1921" ph="SELECT * FRO... tbl_paper_review" />
+                <marker date="1475037907000" expanded="true" signature="2326:2405" ph="UPDATE tbl_p... " />
+                <marker date="1475037907000" expanded="true" signature="2836:2933" ph="SELECT pr_id... tbl_paper_review" />
+                <marker date="1475037907000" expanded="true" signature="3123:3210" ph="SELECT id, t... tbl_paper" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -49,41 +65,34 @@
       <file leaf-file-name="manage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/paper/manage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            <state relative-caret-position="-2805">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="35" />
               <folding>
-                <marker date="1474885852000" expanded="true" signature="7913:8029" ph="..." />
+                <marker date="1475037559000" expanded="true" signature="8080:8196" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/config/config.php">
+      <file leaf-file-name="Bibtex.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+            <state relative-caret-position="305">
+              <caret line="665" column="59" selection-start-line="665" selection-start-column="39" selection-end-line="665" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <file leaf-file-name="BasePrinter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MY_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="290">
+              <caret line="145" column="41" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="41" />
+              <folding>
+                <marker date="1475037720000" expanded="true" signature="7557:7571" ph="..." />
+                <marker date="1475037720000" expanded="true" signature="7861:7875" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/libraries/phpBibLib/AbbrvPrinter.php" />
         <option value="$PROJECT_DIR$/application/libraries/phpBibLib/NatbibPrinter.php" />
         <option value="$PROJECT_DIR$/application/libraries/phpBibLib/NumericPrinter.php" />
         <option value="$PROJECT_DIR$/application/libraries/phpBibLib/db/DBibtex.php" />
@@ -109,7 +117,6 @@
         <option value="$PROJECT_DIR$/application/views/view_edit_review.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/application/views/edit_review.php" />
-        <option value="$PROJECT_DIR$/application/config/constants.php" />
         <option value="$PROJECT_DIR$/application/views/head.php" />
         <option value="$PROJECT_DIR$/application/views/list_of_paper.php" />
         <option value="$PROJECT_DIR$/application/controllers/paper_controller.php" />
@@ -131,12 +138,8 @@
         <option value="$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php" />
         <option value="$PROJECT_DIR$/vendor/css/app.css" />
         <option value="$PROJECT_DIR$/application/views/user/login.php" />
-        <option value="$PROJECT_DIR$/application/controllers/paper/view.php" />
         <option value="$PROJECT_DIR$/application/views/paper/export_individual_bibtex.php" />
-        <option value="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
-        <option value="$PROJECT_DIR$/application/views/header.php" />
         <option value="$PROJECT_DIR$/application/views/paper/edit_review.php" />
-        <option value="$PROJECT_DIR$/application/models/paper_service.php" />
         <option value="$PROJECT_DIR$/application/config/routes.php" />
         <option value="$PROJECT_DIR$/application/config/config.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
@@ -146,7 +149,13 @@
         <option value="$PROJECT_DIR$/application/controllers/user/login.php" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/models/user_service.php" />
+        <option value="$PROJECT_DIR$/application/views/paper/view_list_of_papers.php" />
+        <option value="$PROJECT_DIR$/application/controllers/paper/view.php" />
         <option value="$PROJECT_DIR$/application/controllers/paper/manage.php" />
+        <option value="$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php" />
+        <option value="$PROJECT_DIR$/application/models/paper_service.php" />
+        <option value="$PROJECT_DIR$/application/config/constants.php" />
+        <option value="$PROJECT_DIR$/application/views/header.php" />
       </list>
     </option>
   </component>
@@ -280,6 +289,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -299,6 +330,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpBibLib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-review" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpBibLib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="printer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,12 +571,12 @@
       <workItem from="1474433641927" duration="8301000" />
       <workItem from="1474518747523" duration="8044000" />
       <workItem from="1474608011551" duration="20837000" />
-      <workItem from="1474850311191" duration="16826000" />
+      <workItem from="1474850311191" duration="26136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132789000" />
+    <option name="totallyTimeSpent" value="142099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="839" extended-state="0" />
@@ -547,14 +626,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/NatbibPrinter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/Structures_BibTex/Structures_BibTex.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -601,14 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="69" column="44" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/constants.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -729,62 +792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/paper/view_list_of_papers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="642" column="65" selection-start-line="642" selection-start-column="65" selection-end-line="642" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/paper/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding>
-            <marker date="1474866204000" expanded="true" signature="7921:8037" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/paper_service.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
-          <folding>
-            <marker date="1474883139000" expanded="true" signature="276:312" ph="SELECT * FRO... tbl_paper" />
-            <marker date="1474883139000" expanded="true" signature="922:952" ph="SELECT p.* F... tbl_paper" />
-            <marker date="1474883139000" expanded="true" signature="1114:1160" ph="SELECT * FRO... tbl_paper_type" />
-            <marker date="1474883139000" expanded="true" signature="1349:1430" ph="SELECT id FR... tbl_paper" />
-            <marker date="1474883139000" expanded="true" signature="1349:1443" ph="SELECT id FR... tbl_paper" />
-            <marker date="1474883139000" expanded="true" signature="1825:1921" ph="SELECT * FRO... tbl_paper_review" />
-            <marker date="1474883139000" expanded="true" signature="2326:2405" ph="UPDATE tbl_p... " />
-            <marker date="1474883139000" expanded="true" signature="2836:2933" ph="SELECT pr_id... tbl_paper_review" />
-            <marker date="1474883139000" expanded="true" signature="3123:3210" ph="SELECT id, t... tbl_paper" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/paper/edit_review.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="80" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="101" selection-start-line="19" selection-start-column="101" selection-end-line="19" selection-end-column="101" />
           <folding />
         </state>
       </provider>
@@ -802,17 +813,6 @@
         <state relative-caret-position="15">
           <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="145" column="68" selection-start-line="145" selection-start-column="68" selection-end-line="145" selection-end-column="68" />
-          <folding>
-            <marker date="1474868042000" expanded="true" signature="7494:7508" ph="..." />
-            <marker date="1474868042000" expanded="true" signature="7798:7812" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,18 +872,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/user_service.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/user/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/paper/view_list_of_papers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -896,6 +896,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/user_service.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-842">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -904,28 +912,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/NatbibPrinter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/paper/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="267" column="81" selection-start-line="267" selection-start-column="81" selection-end-line="267" selection-end-column="81" />
+          <folding>
+            <marker date="1475030761000" expanded="true" signature="7921:8037" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/Bibtex.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="665" column="59" selection-start-line="665" selection-start-column="39" selection-end-line="665" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/paper/manage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="-2805">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="35" />
           <folding>
-            <marker date="1474885852000" expanded="true" signature="7913:8029" ph="..." />
+            <marker date="1475037559000" expanded="true" signature="8080:8196" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/phpBibLib/printer/BasePrinter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="145" column="41" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="41" />
+          <folding>
+            <marker date="1475037720000" expanded="true" signature="7557:7571" ph="..." />
+            <marker date="1475037720000" expanded="true" signature="7861:7875" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="-4622">
           <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+    <entry file="file://$PROJECT_DIR$/application/config/constants.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+        <state relative-caret-position="577">
+          <caret line="46" column="77" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/paper_service.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+          <folding>
+            <marker date="1475037907000" expanded="true" signature="276:312" ph="SELECT * FRO... tbl_paper" />
+            <marker date="1475037907000" expanded="true" signature="922:952" ph="SELECT p.* F... tbl_paper" />
+            <marker date="1475037907000" expanded="true" signature="1114:1160" ph="SELECT * FRO... tbl_paper_type" />
+            <marker date="1475037907000" expanded="true" signature="1349:1430" ph="SELECT id FR... tbl_paper" />
+            <marker date="1475037907000" expanded="true" signature="1349:1443" ph="SELECT id FR... tbl_paper" />
+            <marker date="1475037907000" expanded="true" signature="1825:1921" ph="SELECT * FRO... tbl_paper_review" />
+            <marker date="1475037907000" expanded="true" signature="2326:2405" ph="UPDATE tbl_p... " />
+            <marker date="1475037907000" expanded="true" signature="2836:2933" ph="SELECT pr_id... tbl_paper_review" />
+            <marker date="1475037907000" expanded="true" signature="3123:3210" ph="SELECT id, t... tbl_paper" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding />
         </state>
       </provider>

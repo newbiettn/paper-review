@@ -44,7 +44,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 |
 */
 
-define('COLLECTION_BIBTEXT',                    FCPATH . 'vendor/collection.bib');
+define('COLLECTION_BIBTEXT',                    FCPATH . 'vendor/bibliography.bib');
 define('TEMP_BIBTEX',                           FCPATH . 'vendor/temp.bib');
 
 
