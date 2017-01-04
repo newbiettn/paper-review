@@ -182,39 +182,39 @@ class Manage extends MY_Controller {
     ///// Validate bibtex
     ////////////////////////////////////////////////////////////////
     public function validate_bibtex($p){
-        $papers = $this->paper_service->get_paper_from_bib();
+//        $papers = $this->paper_service->get_paper_from_bib();
+//
+//        $required_list =
+//            array("article" => ["author", "title", "journal", "month", "year", "publisher", "address"],
+//                "inproceedings" => ["author", "title", "publisher", "year", "month", "address", "booktitle"]
+//                  );
+//
+//
+//        //get all fields of a paper
+//        $current_fields = array_keys($p);
+//
+//        //get all required fields of a matching type
+//        $type = $p["type"];
+//        $required_fields = $required_list[$type];
+//
+//        //compare if the required field existed
+//        $diff_arr = array_diff($required_fields, $current_fields);
+//
+//        //the field exists but empty is still invalidated
+//        foreach($required_fields as $f) {
+//            $field_content = $p[$f];
+//            if ($field_content == '') {
+//                array_push($diff_arr, $f);
+//            }
+//        }
+//        $str = "";
+//        if (!empty($diff_arr)){
+//            foreach($diff_arr as $field) {
+//                $str .= "<span style='display:inline-block; background: #f1f1f1; border: 1px solid #dddddd; margin: 3px; padding: 3px 5px;font-size: 12px;'>" . $field . "</span>";
+//            }
+//        }
 
-        $required_list =
-            array("article" => ["author", "title", "journal", "month", "year", "publisher", "address"],
-                "inproceedings" => ["author", "title", "publisher", "year", "month", "address", "booktitle"]
-                  );
-
-
-        //get all fields of a paper
-        $current_fields = array_keys($p);
-
-        //get all required fields of a matching type
-        $type = $p["type"];
-        $required_fields = $required_list[$type];
-
-        //compare if the required field existed
-        $diff_arr = array_diff($required_fields, $current_fields);
-
-        //the field exists but empty is still invalidated
-        foreach($required_fields as $f) {
-            $field_content = $p[$f];
-            if ($field_content == '') {
-                array_push($diff_arr, $f);
-            }
-        }
-        $str = "";
-        if (!empty($diff_arr)){
-            foreach($diff_arr as $field) {
-                $str .= "<span style='display:inline-block; background: #f1f1f1; border: 1px solid #dddddd; margin: 3px; padding: 3px 5px;font-size: 12px;'>" . $field . "</span>";
-            }
-        }
-
-        return $str;
+        return "";
     }
 
     ////////////////////////////////////////////////////////////////
