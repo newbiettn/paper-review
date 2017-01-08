@@ -38,7 +38,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.bibtex-biblio').paging({
-                    limit:50
+                    limit:15
                 });
 
                 $('#search_btn').click(function() {

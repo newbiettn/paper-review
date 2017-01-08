@@ -117,7 +117,7 @@ abstract class BasePrinter {
 		$str .= (isset($entry['volume'])?', <span class="bibtex-volume">'.$entry['volume'].'</span>':'');
 		$str .= ((isset($entry['volume']) && isset($entry['number'])) ? '<span class="bibtex-number">('.$entry['number'].')</span>':'');
 		$str .= (isset($entry['pages']) ? (isset($entry['number']) || isset($entry['volume']) ? '' : ', ') .'<span class="bibtex-pages">'.(isset($entry['volume'])?':':'pages ').'' . $this->PagesStr($entry) . '</span>' : '');
-		$str .=	(isset($entry['publisher']) ? ((isset($entry['booktitle']) || (isset($entry['journal']) || isset($entry['volume'])) ? ', ' : '') . '<span class="bibtex-publisher">' . $entry['publisher'] . '</span>'):'');
+//		$str .=	(isset($entry['publisher']) ? ((isset($entry['booktitle']) || (isset($entry['journal']) || isset($entry['volume'])) ? ', ' : '') . '<span class="bibtex-publisher">' . $entry['publisher'] . '</span>'):'');
 		$str .= (isset($entry['year']) ? ', <span class="bibtex-year">' .$entry['year'] . '</span>.' : '' );
 
         $str .= $this->add_export_icon($entry);
